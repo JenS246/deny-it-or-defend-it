@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#087f83" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#102d35" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="description"
+      content="A short Pennsylvania civil litigation game about denials and affirmative defenses."
+    />
+    <title>Deny It or Defend It?</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="background-shapes" aria-hidden="true">
+      <span class="shape shape-ring"></span>
+      <span class="shape shape-stripe"></span>
+      <span class="shape shape-corner"></span>
+    </div>
+
+    <main class="game-shell" aria-labelledby="game-title">
+      <header class="game-header">
+        <div class="title-lockup">
+          <span class="family-mark" aria-hidden="true">D/D</span>
+          <h1 id="game-title">DENY IT OR<br /><span>DEFEND IT?</span></h1>
+        </div>
+
+        <div id="game-meta" class="game-meta" aria-label="Game progress" hidden>
+          <div class="meta-copy">
+            <span id="progress">Question 1 of 10</span>
+            <span id="score">0 right</span>
+          </div>
+          <div id="progress-marks" class="progress-marks" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <section id="intro-screen" class="intro-screen" aria-labelledby="intro-title">
+        <article class="intro-card">
+          <p class="card-label">PENNSYLVANIA CIVIL LITIGATION</p>
+          <h2 id="intro-title">There's more to an Answer than saying no.</h2>
+          <div class="intro-copy">
+            <p>When someone files a civil lawsuit, the defendant has an opportunity to respond.</p>
+            <p>
+              Sometimes, the defendant <strong>denies</strong> what the plaintiff says happened.
+              Other times, the defendant raises an <strong>affirmative defense</strong>. This means
+              the defendant has another legal reason the plaintiff may not be able to win the case.
+            </p>
+            <div class="examples" aria-label="Examples">
+              <p><strong>Denial:</strong> “I never borrowed that money.”</p>
+              <p><strong>Affirmative Defense:</strong> “I borrowed the money, but I already paid it back.”</p>
+            </div>
+            <p>
+              In Pennsylvania, affirmative defenses are generally included in a section of the
+              defendant's pleading called <strong>New Matter</strong>.
+            </p>
+            <p><strong>Ready to practice?</strong></p>
+          </div>
+          <button id="start-button" class="primary-button" type="button">LET'S PLAY!</button>
+        </article>
+      </section>
+
+      <section id="play-screen" class="play-screen" aria-label="Current question" hidden>
+        <article id="scenario-card" class="scenario-card" tabindex="-1">
+          <p class="card-label">READ THE RESPONSE</p>
+          <div class="statements">
+            <div class="statement plaintiff-statement">
+              <span>The plaintiff says:</span>
+              <p id="plaintiff-text"></p>
+            </div>
+            <div class="statement defendant-statement">
+              <span>The defendant says:</span>
+              <p id="defendant-text"></p>
+            </div>
+          </div>
+        </article>
+
+        <div id="answers" class="answers" aria-label="Choose an answer">
+          <button class="answer-button deny-button" type="button" data-answer="deny">
+            <kbd aria-hidden="true">1</kbd>
+            <span class="answer-title">DENY IT</span>
+            <span class="answer-help">Disagrees with the allegation</span>
+          </button>
+          <button class="answer-button defend-button" type="button" data-answer="defend">
+            <kbd aria-hidden="true">2</kbd>
+            <span class="answer-title">DEFEND IT</span>
+            <span class="answer-help">Raises an affirmative defense</span>
+          </button>
+        </div>
+
+        <div id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true" hidden>
+          <div>
+            <strong id="feedback-title"></strong>
+            <p id="feedback-text"></p>
+          </div>
+          <button id="next-button" class="next-button" type="button">NEXT QUESTION</button>
+        </div>
+      </section>
+
+      <section id="end-screen" class="end-screen" aria-labelledby="end-title" hidden>
+        <p class="card-label">PRACTICE COMPLETE</p>
+        <h2 id="end-title">NICE WORK!</h2>
+        <p class="final-score">You scored <strong id="final-score">0 / 10</strong>.</p>
+        <p class="takeaway">
+          You've practiced an important distinction in civil litigation: defendants can deny
+          allegations, but they can also raise affirmative defenses.
+        </p>
+        <div class="end-actions">
+          <button id="play-again-button" class="primary-button" type="button">PLAY AGAIN</button>
+          <a
+            class="secondary-button"
+            href="https://www.pacodeandbulletin.gov/secure/pacode/data/231/chapter1000/s1030.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >REVIEW THE RULE</a>
+        </div>
+      </section>
+
+      <noscript>This game needs JavaScript to display questions and check answers.</noscript>
+    </main>
+  </body>
+</html>
